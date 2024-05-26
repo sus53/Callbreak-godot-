@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3w3wkdy0hnhi"]
+
+[ext_resource type="Texture2D" uid="uid://ctqfscp1vchg4" path="res://assets/card_backside.jpeg" id="1_xag15"]
+
+[node name="card_bundle" type="Node2D"]
+position = Vector2(213, 8)
+
+[node name="card_backside" type="Node2D" parent="."]
+position = Vector2(3, -2)
+
+[node name="CardBackside" type="Sprite2D" parent="card_backside"]
+position = Vector2(-9.88999, -5.16)
+scale = Vector2(0.244, 0.24)
+texture = ExtResource("1_xag15")
+metadata/_edit_group_ = true
+
+[node name="CardBackside3" type="Sprite2D" parent="card_backside"]
+position = Vector2(-3.95252, -0.222519)
+scale = Vector2(0.244, 0.24)
+texture = ExtResource("1_xag15")
+metadata/_edit_group_ = true
+
+[node name="CardBackside2" type="Sprite2D" parent="card_backside"]
+position = Vector2(3.04751, 4.77748)
+scale = Vector2(0.244, 0.24)
+texture = ExtResource("1_xag15")
+metadata/_edit_group_ = true
+
+[node name="CardBackside4" type="Sprite2D" parent="card_backside"]
+position = Vector2(11.0475, 10.7775)
+scale = Vector2(0.244, 0.24)
+texture = ExtResource("1_xag15")
+metadata/_edit_group_ = true
+
+[node name="CardBackside5" type="Sprite2D" parent="card_backside"]
+position = Vector2(17, 17)
+scale = Vector2(0.244, 0.24)
+texture = ExtResource("1_xag15")
+metadata/_edit_group_ = true
+
+[node name="CardBackside6" type="Sprite2D" parent="card_backside"]
+position = Vector2(23, 23)
+scale = Vector2(0.244, 0.24)
+texture = ExtResource("1_xag15")
+metadata/_edit_group_ = true

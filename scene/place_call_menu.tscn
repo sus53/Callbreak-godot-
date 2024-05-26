@@ -1,0 +1,173 @@
+[gd_scene load_steps=6 format=3 uid="uid://dj1p046idxgs8"]
+
+[ext_resource type="Texture2D" uid="uid://bhabxithay0es" path="res://assets/menu_background.jpg" id="1_7lmtq"]
+[ext_resource type="Texture2D" uid="uid://dox6n75i1o4ww" path="res://assets/progress_done.jpeg" id="2_0fi05"]
+[ext_resource type="Script" path="res://script/button_controller.gd" id="3_doy8h"]
+[ext_resource type="Texture2D" uid="uid://cb0l52aboke47" path="res://assets/progress_over.jpg" id="3_vhm4s"]
+[ext_resource type="Script" path="res://script/call_progress.gd" id="4_hde8t"]
+
+[node name="place_call_menu" type="Node2D"]
+visible = false
+
+[node name="MenuBackground" type="Sprite2D" parent="."]
+position = Vector2(575.687, 323)
+scale = Vector2(0.720859, 0.538958)
+texture = ExtResource("1_7lmtq")
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 31.0
+offset_top = 40.0
+offset_right = 31.0
+offset_bottom = 40.0
+
+[node name="Button1" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_left = 97.0
+offset_top = 205.0
+offset_right = 223.0
+offset_bottom = 286.0
+text = "1"
+script = ExtResource("3_doy8h")
+
+[node name="Button2" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_left = 284.0
+offset_top = 203.0
+offset_right = 410.0
+offset_bottom = 284.0
+text = "2"
+script = ExtResource("3_doy8h")
+
+[node name="Button3" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_left = 474.0
+offset_top = 204.0
+offset_right = 600.0
+offset_bottom = 285.0
+text = "3"
+script = ExtResource("3_doy8h")
+
+[node name="Button4" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_left = 655.0
+offset_top = 205.0
+offset_right = 781.0
+offset_bottom = 286.0
+text = "4"
+script = ExtResource("3_doy8h")
+
+[node name="Button5" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_left = 857.0
+offset_top = 205.0
+offset_right = 983.0
+offset_bottom = 286.0
+text = "5"
+script = ExtResource("3_doy8h")
+
+[node name="Button6" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 332.0
+offset_right = 226.0
+offset_bottom = 413.0
+text = "6"
+script = ExtResource("3_doy8h")
+
+[node name="Button7" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_left = 285.0
+offset_top = 333.0
+offset_right = 411.0
+offset_bottom = 414.0
+text = "7"
+script = ExtResource("3_doy8h")
+
+[node name="Button8" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_left = 472.0
+offset_top = 329.0
+offset_right = 598.0
+offset_bottom = 410.0
+text = "8"
+script = ExtResource("3_doy8h")
+
+[node name="Button9" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_left = 656.0
+offset_top = 325.0
+offset_right = 782.0
+offset_bottom = 406.0
+text = "9"
+script = ExtResource("3_doy8h")
+
+[node name="Button10" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_left = 853.0
+offset_top = 326.0
+offset_right = 979.0
+offset_bottom = 407.0
+text = "10"
+script = ExtResource("3_doy8h")
+
+[node name="Button11" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_left = 99.0
+offset_top = 449.0
+offset_right = 225.0
+offset_bottom = 530.0
+text = "11"
+script = ExtResource("3_doy8h")
+
+[node name="Button12" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_left = 284.0
+offset_top = 450.0
+offset_right = 410.0
+offset_bottom = 531.0
+text = "12"
+script = ExtResource("3_doy8h")
+
+[node name="Button13" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_left = 472.0
+offset_top = 451.0
+offset_right = 598.0
+offset_bottom = 532.0
+text = "13"
+script = ExtResource("3_doy8h")
+
+[node name="lbl_place_call" type="Label" parent="."]
+offset_left = 133.0
+offset_top = 37.0
+offset_right = 271.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 54
+text = "Place your Call"
+
+[node name="call_progress" type="TextureProgressBar" parent="."]
+offset_left = 637.0
+offset_top = 59.0
+offset_right = 853.0
+offset_bottom = 103.0
+value = 9.0
+texture_under = ExtResource("2_0fi05")
+texture_progress = ExtResource("3_vhm4s")
+script = ExtResource("4_hde8t")
+
+[connection signal="visibility_changed" from="." to="call_progress" method="_on_place_call_menu_visibility_changed"]
+[connection signal="pressed" from="Buttons/Button1" to="Buttons/Button1" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Button2" to="Buttons/Button2" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Button3" to="Buttons/Button3" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Button4" to="Buttons/Button4" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Button5" to="Buttons/Button5" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Button6" to="Buttons/Button6" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Button7" to="Buttons/Button7" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Button8" to="Buttons/Button8" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Button9" to="Buttons/Button9" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Button10" to="Buttons/Button10" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Button11" to="Buttons/Button11" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Button12" to="Buttons/Button12" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Button13" to="Buttons/Button13" method="_on_pressed"]

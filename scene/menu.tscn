@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://cw2bywuyi3maa"]
+
+[ext_resource type="Script" path="res://script/menu.gd" id="1_coo3x"]
+[ext_resource type="Texture2D" uid="uid://cj5ixsl7e54kb" path="res://assets/BG/playing card background.png" id="2_7i41m"]
+[ext_resource type="Texture2D" uid="uid://dvtpilvieru5e" path="res://assets/diamond/PNG/11.png" id="3_fd0ij"]
+[ext_resource type="Texture2D" uid="uid://duve4t5w8pkm2" path="res://assets/diamond/PNG/12.png" id="4_xtcxw"]
+[ext_resource type="Texture2D" uid="uid://c7evax2jlrjh" path="res://assets/diamond/PNG/13.png" id="5_5cf58"]
+[ext_resource type="FontFile" uid="uid://by653dikspd" path="res://assets/Fonts/Quicksand-Regular.ttf" id="6_eu52v"]
+[ext_resource type="FontFile" uid="uid://8dp5ao2sdp1x" path="res://assets/Fonts/Quicksand-Bold.ttf" id="6_pa1i8"]
+[ext_resource type="FontFile" uid="uid://c0mn6jadbr4ht" path="res://assets/Fonts/DancingScript-Regular.ttf" id="7_4nt6r"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_coo3x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(575, 324)
+scale = Vector2(0.255605, 0.141796)
+texture = ExtResource("2_7i41m")
+
+[node name="card_bundle" type="Sprite2D" parent="."]
+position = Vector2(596, 418)
+scale = Vector2(2.86464, 2.25035)
+
+[node name="Sprite2D" type="Sprite2D" parent="card_bundle"]
+position = Vector2(5.81366, -54.8586)
+scale = Vector2(0.0408308, 0.0551404)
+texture = ExtResource("3_fd0ij")
+
+[node name="Sprite2D2" type="Sprite2D" parent="card_bundle"]
+position = Vector2(8.26151, -53.666)
+rotation = 0.0774888
+scale = Vector2(0.0408308, 0.0551404)
+texture = ExtResource("4_xtcxw")
+
+[node name="Sprite2D3" type="Sprite2D" parent="card_bundle"]
+position = Vector2(10.7094, -52.0759)
+rotation = 0.147811
+scale = Vector2(0.0408308, 0.0551404)
+texture = ExtResource("5_5cf58")
+
+[node name="VBoxContainer" type="Area2D" parent="."]
+position = Vector2(493, 426)
+scale = Vector2(3.26817, 2.51556)
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+offset_left = 17.135
+offset_top = 1.19259
+offset_right = 58.135
+offset_bottom = 18.1926
+theme_override_fonts/font = ExtResource("6_eu52v")
+theme_override_font_sizes/font_size = 8
+text = "Play"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+offset_left = 17.135
+offset_top = 22.1926
+offset_right = 58.135
+offset_bottom = 40.1926
+theme_override_fonts/font = ExtResource("6_eu52v")
+theme_override_font_sizes/font_size = 8
+text = "Exit
+"
+
+[node name="lbl_callbreak" type="Label" parent="."]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 96.0
+offset_right = 736.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(0.227965, 8.58653e-05, 0.780242, 1)
+theme_override_fonts/font = ExtResource("6_pa1i8")
+theme_override_font_sizes/font_size = 46
+text = "Call Break"
+
+[node name="lbl_hero" type="Label" parent="."]
+layout_mode = 0
+offset_left = 690.0
+offset_top = 164.0
+offset_right = 720.0
+offset_bottom = 189.0
+rotation = -0.365538
+scale = Vector2(2.66948, 2.70003)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_4nt6r")
+text = "Hero"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdn2ilq86a1g8"]
+
+[ext_resource type="Texture2D" uid="uid://uyci8r7g7s03" path="res://assets/BG/playing card background green.png" id="1_7g7mq"]
+
+[node name="Background" type="Node2D"]
+z_index = -2
+
+[node name="CardBackground" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(577, 326)
+scale = Vector2(0.255813, 0.146943)
+texture = ExtResource("1_7g7mq")
