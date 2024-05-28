@@ -3,7 +3,6 @@ extends TextureProgressBar
 const DURATION = 8
 var elapsed_time = 0.0
 
-
 func _ready():
 	self.value = self.max_value
 
