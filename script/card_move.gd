@@ -86,34 +86,27 @@ func check_cards_available_part(player_card_selected,player_cards):
 func check_high_card(player_cards):
 	match global.player_turn:
 		1:
-			for i in player_cards.values():
-				if str(i).substr(0,1) > global.player4_card_selected:
-					return true
-			return false
+			return check_high_card_sub(player_cards)
 		2:
-			for i in player_cards.values():
-				if str(i).substr(0,1) > global.player4_card_selected:
-					return true
-			return false
+			return check_high_card_sub(player_cards)
 		3:
-			for i in player_cards.values():
-				if str(i).substr(0,1) > global.player4_card_selected:
-					return true
-			return false
+			return check_high_card_sub(player_cards)
 		4:
-			for i in player_cards.values():
-				if str(i).substr(0,1) > global.player4_card_selected:
-					return true
-			return false
+			return check_high_card_sub(player_cards)
 
-func check_high_card_sub(player_card_selected,player_cards):
+func check_high_card_sub(player_cards):
+	var player1_selected = 0 if global.player1_card_selected == "" else int(global.player1_card_selected.substr(1,-1))
+	var player2_selected = 0 if global.player2_card_selected == "" else int(global.player2_card_selected.substr(1,-1))
+	var player3_selected = 0 if global.player3_card_selected == "" else int(global.player3_card_selected.substr(1,-1))
+	var player4_selected = 0 if global.player4_card_selected == "" else int(global.player4_card_selected.substr(1,-1))
+	
 	for i in player_cards.values():
-		if str(i).substr(0,1) > player_card_selected:
+		if int(str(i).substr(1,-1)) > player1_selected || int(str(i).substr(1,-1)) > player2_selected || int(str(i).substr(1,-1)) > player3_selected || int(str(i).substr(1,-1)) > player4_selected:
 			return true
 	return false
 
 func check_spade(player_cards):
-	for i in player_cards.values():
+	for i in player_cards.values():		
 		if str(i).substr(0,1) == "s":
 			return true
 			break
@@ -138,12 +131,38 @@ func check_hover_card(player_cards):
 			return check_hover_card_sub(global.player4_card_selected,player_cards)
 						
 func check_hover_card_sub(player_selected_card,player_cards):
+	var player1_selected = 0 if global.player1_card_selected == "" else global.player1_card_selected
+	var player2_selected = 0 if global.player2_card_selected == "" else global.player2_card_selected
+	var player3_selected = 0 if global.player3_card_selected == "" else global.player3_card_selected
+	var player4_selected = 0 if global.player4_card_selected == "" else global.player4_card_selected
+	var player_selected_cards = [player1_selected,player2_selected,player3_selected,player4_selected]
+	var isHigh = false
 	if player_selected_card == "":
 		self.scale = Vector2(1.1,1.1)
 		return true
-	elif player_selected_card.substr(0,1) == player_cards[int(self.name.substr(4)) - 1].substr(0,1):
-		self.scale = Vector2(1.1,1.1)
-		return true
+	elif player_selected_card.substr(0,1) == player_cards[int(self.name.substr(4,5)) - 1].substr(0,1):
+		if check_high_card(player_cards):
+			for i in player_selected_cards:
+				if typeof(i) == TYPE_STRING:
+					if player_cards[int(self.name.substr(4,5)) - 1].substr(0,1) == i.substr(0,1):
+						print(int(i.substr(1,-1)))
+						print(player_cards[int(self.name.substr(4,5)) - 1].substr(1,-1))
+						print(int(i.substr(1,-1)) < int( player_cards[int(self.name.substr(4,5)) - 1].substr(1,-1)))
+						if int(i.substr(1,-1)) < int( player_cards[int(self.name.substr(4,5)) - 1].substr(1,-1)):
+							isHigh = true
+							break
+						else:
+							isHigh = false 
+					else:
+						isHigh = false
+			if isHigh:
+				self.scale = Vector2(1.1,1.1)
+				return true
+			else:
+				global.can_select = false
+		else:
+			self.scale = Vector2(1.1,1.1)
+			return true
 	else:
 		global.can_select = false
 
