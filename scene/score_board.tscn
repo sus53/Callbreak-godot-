@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://brppoo7s0x8w5"]
+
+[ext_resource type="Texture2D" uid="uid://dox6n75i1o4ww" path="res://assets/progress_done.jpeg" id="1_m6ctl"]
+[ext_resource type="Script" path="res://script/score_board.gd" id="1_xcq2x"]
+[ext_resource type="Script" path="res://score_board_close_button.gd" id="1_y78uv"]
+
+[node name="score_board" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xcq2x")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+offset_left = 2166.0
+offset_top = 47.0
+offset_right = 2184.0
+offset_bottom = 180.0
+scale = Vector2(4.72826, 0.775284)
+text = "X"
+script = ExtResource("1_y78uv")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 45.0
+offset_right = 304.0
+offset_bottom = 178.0
+scale = Vector2(2.65556, 1.69494)
+
+[node name="round" type="VBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="lbl_round" type="Label" parent="BoxContainer/round"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Round         "
+
+[node name="player1" type="VBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="player1" type="Label" parent="BoxContainer/player1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Player1     "
+
+[node name="player2" type="VBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="player2" type="Label" parent="BoxContainer/player2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Player2      "
+
+[node name="player3" type="VBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="player3" type="Label" parent="BoxContainer/player3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Player3      "
+
+[node name="player4" type="VBoxContainer" parent="BoxContainer"]
+z_index = 2
+layout_mode = 2
+
+[node name="player4" type="Label" parent="BoxContainer/player4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Player4"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1096, 546)
+scale = Vector2(11.1721, -24.9222)
+texture = ExtResource("1_m6ctl")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

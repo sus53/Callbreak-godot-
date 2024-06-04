@@ -1,13 +1,15 @@
 extends Node
 
-var bid1 = 0
-var score1 = 0
-var bid2 = 0
-var score2 = 0
-var bid3 = 0
-var score3 = 0
-var bid4 = 0
-var score4 = 0
+var bid1 = [0,0,0,0,0]
+var score1 = [0,0,0,0,0]
+var bid2 = [0,0,0,0,0]
+var score2 = [0,0,0,0,0]
+var bid3 = [0,0,0,0,0]
+var score3 =[0,0,0,0,0]
+var bid4 = [0,0,0,0,0]
+var score4 = [0,0,0,0,0]
+
+var round = 0
 
 var card_disabled = false
 
@@ -41,13 +43,11 @@ func _ready():
 	
 func calculate_score():
 	var highest = 0
-	var selected_card_arr = {1:player1_card_selected.substr(0,-1),2:player2_card_selected.substr(0,-1),3:player3_card_selected.substr(0,-1),4:player4_card_selected.substr(0,-1)}
-	print("Selected" + player1_card_selected.substr(0,-1))
-	
+	var selected_card_arr = {1:player1_card_selected,2:player2_card_selected,3:player3_card_selected,4:player4_card_selected}
 	for i in range(1,5):
 		if selected_card_arr[i].substr(0,1) == "s":
 			selected_card_arr[i] = selected_card_arr[i].substr(0,1) + str(int(selected_card_arr[i].substr(1,-1)) * 100)  
-		elif selected_card_arr[1].substr(0,1) != selected_card_arr[i].substr(0,1):
+		elif selected_card_arr[start_turn].substr(0,1) != selected_card_arr[i].substr(0,1):
 			selected_card_arr[i] = selected_card_arr[i].substr(0,1) + str(int(selected_card_arr[i].substr(1,-1)) * -1)
 			
 	for i in range(1,5):
@@ -58,15 +58,15 @@ func calculate_score():
 			start_turn = i
 	match  index:
 		1:
-			score1 += 1
-			return Vector2(0,11000)
+			score1[round] += 1
+			return Vector2(0,20000)
 		2:
-			score2 += 1
-			return Vector2(11000,0)
+			score2[round] += 1
+			return Vector2(20000,0)
 		3: 
-			score3 += 1
-			return Vector2(0,-11000)
+			score3[round] += 1
+			return Vector2(0,-20000)
 		4: 
-			score4 += 1
-			return Vector2(-11000,0)
+			score4[round] += 1
+			return Vector2(-20000,0)
 	

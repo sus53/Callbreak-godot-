@@ -2,8 +2,11 @@ extends Area2D
 
 var global = Game
 @onready var player_area = $"../.."
+@onready var turn_over_timer = $"../turn_over"
+@onready var render_time = $"../../render_time"
 
 func _on_mouse_entered():
+	
 	if global.card_disabled:
 		if int(global.player_turn) == int(global.player_active):
 			match global.player_turn:
@@ -26,7 +29,7 @@ func _on_input_event(viewport, event, shape_idx):
 					if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 						if global.can_select:
 							var card_move_tween = create_tween()
-							card_move_tween.tween_property(self, "position", Vector2(-350,600), 0.1)
+							card_move_tween.tween_property(self, "position", Vector2(30,680), 0.25)
 							global.player_turn = global.player_turn + 1 if global.player_turn < 4 else 1
 							global.reset_turn += 1
 							match int(global.player_active):
@@ -95,14 +98,26 @@ func check_high_card(player_cards):
 			return check_high_card_sub(player_cards)
 
 func check_high_card_sub(player_cards):
+	match global.start_turn:
+		1:
+			return check_high_card_loop(global.player1_card_selected,player_cards)
+		2:
+			return check_high_card_loop(global.player2_card_selected,player_cards)
+		3:
+			return check_high_card_loop(global.player3_card_selected,player_cards)
+		4:
+			return check_high_card_loop(global.player4_card_selected,player_cards)
+	
+func check_high_card_loop(player_selected_card,player_cards):
 	var player1_selected = 0 if global.player1_card_selected == "" else int(global.player1_card_selected.substr(1,-1))
 	var player2_selected = 0 if global.player2_card_selected == "" else int(global.player2_card_selected.substr(1,-1))
 	var player3_selected = 0 if global.player3_card_selected == "" else int(global.player3_card_selected.substr(1,-1))
 	var player4_selected = 0 if global.player4_card_selected == "" else int(global.player4_card_selected.substr(1,-1))
 	
 	for i in player_cards.values():
-		if int(str(i).substr(1,-1)) > player1_selected || int(str(i).substr(1,-1)) > player2_selected || int(str(i).substr(1,-1)) > player3_selected || int(str(i).substr(1,-1)) > player4_selected:
-			return true
+		if i.substr(0,1) == player_selected_card.substr(0,1):
+			if int(str(i).substr(1,-1)) > player1_selected && int(str(i).substr(1,-1)) > player2_selected && int(str(i).substr(1,-1)) > player3_selected && int(str(i).substr(1,-1)) > player4_selected:
+				return true
 	return false
 
 func check_spade(player_cards):
@@ -145,9 +160,6 @@ func check_hover_card_sub(player_selected_card,player_cards):
 			for i in player_selected_cards:
 				if typeof(i) == TYPE_STRING:
 					if player_cards[int(self.name.substr(4,5)) - 1].substr(0,1) == i.substr(0,1):
-						print(int(i.substr(1,-1)))
-						print(player_cards[int(self.name.substr(4,5)) - 1].substr(1,-1))
-						print(int(i.substr(1,-1)) < int( player_cards[int(self.name.substr(4,5)) - 1].substr(1,-1)))
 						if int(i.substr(1,-1)) < int( player_cards[int(self.name.substr(4,5)) - 1].substr(1,-1)):
 							isHigh = true
 							break
@@ -158,7 +170,7 @@ func check_hover_card_sub(player_selected_card,player_cards):
 			if isHigh:
 				self.scale = Vector2(1.1,1.1)
 				return true
-			else:
+			else:     
 				global.can_select = false
 		else:
 			self.scale = Vector2(1.1,1.1)
@@ -171,17 +183,25 @@ func select_card(player_cards):
 	
 func reset_turn():
 	if global.reset_turn == 4:
-		round_over(global.calculate_score())		
 		global.reset_turn = 0
+		turn_over_timer.start()
+	
+	if global.player1_cards.size() == 0 && global.player2_cards.size() == 0 && global.player3_cards.size() == 0 && global.player4_cards.size() == 0:
+		global.round += 1
+		render_time.start()
 		
-func round_over(position):
+func turn_over(position):
 	var tween1 = create_tween()
 	var tween2 = create_tween()
 	var tween3 = create_tween()
 	var tween4 = create_tween()
-	tween1.tween_property(global.player1_card_node, "position", position, 0.5)
-	tween2.tween_property(global.player2_card_node, "position", position.rotated(PI/2), 0.5)
-	tween3.tween_property(global.player3_card_node, "position", position.rotated(-PI), 0.5)
-	tween4.tween_property(global.player4_card_node, "position", position.rotated(PI*3/2), 0.5)
+	tween1.tween_property(global.player1_card_node, "position", position, 1)
+	tween2.tween_property(global.player2_card_node, "position", position.rotated(PI/2), 1)
+	tween3.tween_property(global.player3_card_node, "position", position.rotated(-PI), 1)
+	tween4.tween_property(global.player4_card_node, "position", position.rotated(PI*3/2), 1)
 
-	
+func _on_turn_over_timeout():
+	turn_over(global.calculate_score())        
+
+func _on_render_time_timeout():
+	get_tree().reload_current_scene()

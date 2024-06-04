@@ -7,6 +7,6 @@ z_index = -2
 
 [node name="CardBackground" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(577, 326)
-scale = Vector2(0.255813, 0.146943)
+position = Vector2(634, 343)
+scale = Vector2(0.384524, -0.235684)
 texture = ExtResource("1_7g7mq")

@@ -1,6 +1,6 @@
 extends TextureProgressBar
 
-const DURATION = 8
+const DURATION = 15
 var elapsed_time = 0.0
 
 func _ready():
