@@ -174,6 +174,10 @@ text = "Score/Bid : "
 [node name="render_time" type="Timer" parent="."]
 wait_time = 2.079
 
+[node name="ai_move" type="Timer" parent="."]
+wait_time = 1.92
+one_shot = true
+
 [connection signal="timeout" from="card_show" to="." method="_on_timer_timeout"]
 [connection signal="input_event" from="card_suffle/card1" to="card_suffle/card1" method="_on_input_event"]
 [connection signal="mouse_entered" from="card_suffle/card1" to="card_suffle/card1" method="_on_mouse_entered"]
@@ -216,3 +220,4 @@ wait_time = 2.079
 [connection signal="mouse_exited" from="card_suffle/card13" to="card_suffle/card13" method="_on_mouse_exited"]
 [connection signal="timeout" from="card_suffle/turn_over" to="card_suffle/card1" method="_on_turn_over_timeout"]
 [connection signal="timeout" from="render_time" to="card_suffle/card1" method="_on_render_time_timeout"]
+[connection signal="timeout" from="ai_move" to="card_suffle/card1" method="_on_ai_move_timeout"]

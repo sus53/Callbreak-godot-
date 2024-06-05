@@ -76,8 +76,6 @@ func _on_timer_timeout():
 	menu_show.start()
 
 func suffle_card_and_add_cards(player_card):
-	print(self.name)
-	print("-------")
 	var new_player_card = {}
 	var card_names_index = [card_names[0].substr(0,1),card_names[1].substr(0,1),card_names[2].substr(0,1),card_names[3].substr(0,1)]
 	for i in range(1, 14):
@@ -85,21 +83,18 @@ func suffle_card_and_add_cards(player_card):
 		random_index_number = randi() % 13 + 2
 		to_find_num = card_names[random_index_card] + str("%02d" % random_index_number)
 		while find_duplicate(to_find_num):
-			print(to_find_num)
-			print(get_all_player_cards())
-			print("__________________________________")
 			random_index_card = randi() % card_names.size() 
 			random_index_number = randi() % 13 + 2
 			to_find_num = card_names[random_index_card] + str("%02d" % random_index_number)
 		player_card[i-1] = str(card_names[random_index_card] + str("%02d" % random_index_number))
-		print(new_player_card)
 	new_player_card = sort_cards(player_card)
 	for  i in  range(1, 14):
 		card = get_node("./card_suffle/card" + str(i))
 		card.get_child(0).texture = load("res://assets/" + new_player_card[i-1].substr(0,new_player_card[i-1].length() - 2).to_lower() + "/PNG/" + str(new_player_card[i-1].substr(new_player_card[i-1].length() - 2,2)) + ".png")
 	return new_player_card
 		
-	
+
+
 func _on_mouse_entered():
 	global.player_active = self.name.substr(11)
 

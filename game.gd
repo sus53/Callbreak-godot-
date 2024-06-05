@@ -16,6 +16,7 @@ var card_disabled = false
 var can_select = false
 var player_turn = 1
 var start_turn = 1
+var start_turn_card = ""
 var reset_turn = 0
 
 var player_active = ""

@@ -19,12 +19,12 @@ grow_vertical = 2
 script = ExtResource("1_coo3x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(965, 533)
+position = Vector2(392.291, 280.781)
 scale = Vector2(0.429209, 0.242448)
 texture = ExtResource("2_7i41m")
 
 [node name="card_bundle" type="Sprite2D" parent="."]
-position = Vector2(973, 619)
+position = Vector2(400.291, 366.781)
 scale = Vector2(2.86464, 2.25035)
 
 [node name="Sprite2D" type="Sprite2D" parent="card_bundle"]
@@ -45,7 +45,7 @@ scale = Vector2(0.0408308, 0.0551404)
 texture = ExtResource("5_5cf58")
 
 [node name="VBoxContainer" type="Area2D" parent="."]
-position = Vector2(870, 627)
+position = Vector2(297.291, 374.781)
 scale = Vector2(3.26817, 2.51556)
 
 [node name="Play" type="Button" parent="VBoxContainer"]
@@ -69,10 +69,10 @@ text = "Exit
 
 [node name="lbl_callbreak" type="Label" parent="."]
 layout_mode = 0
-offset_left = 887.0
-offset_top = 297.0
-offset_right = 1113.0
-offset_bottom = 355.0
+offset_left = 314.291
+offset_top = 44.7806
+offset_right = 540.291
+offset_bottom = 102.781
 theme_override_colors/font_color = Color(0.227965, 8.58653e-05, 0.780242, 1)
 theme_override_fonts/font = ExtResource("6_pa1i8")
 theme_override_font_sizes/font_size = 46
@@ -80,10 +80,10 @@ text = "Call Break"
 
 [node name="lbl_hero" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1067.0
-offset_top = 365.0
-offset_right = 1097.0
-offset_bottom = 390.0
+offset_left = 494.291
+offset_top = 112.781
+offset_right = 524.291
+offset_bottom = 137.781
 rotation = -0.365538
 scale = Vector2(2.66948, 2.70003)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
