@@ -156,7 +156,7 @@ scale = Vector2(37.4687, 52.1448)
 shape = SubResource("RectangleShape2D_cfb5c")
 
 [node name="turn_over" type="Timer" parent="card_suffle"]
-wait_time = 0.647
+wait_time = 1.12
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -172,10 +172,11 @@ offset_bottom = 128.0
 text = "Score/Bid : "
 
 [node name="render_time" type="Timer" parent="."]
-wait_time = 2.079
+wait_time = 2.019
+one_shot = true
 
 [node name="ai_move" type="Timer" parent="."]
-wait_time = 1.92
+wait_time = 0.849
 one_shot = true
 
 [connection signal="timeout" from="card_show" to="." method="_on_timer_timeout"]

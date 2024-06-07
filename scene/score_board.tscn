@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dox6n75i1o4ww" path="res://assets/progress_done.jpeg" id="1_m6ctl"]
 [ext_resource type="Script" path="res://script/score_board.gd" id="1_xcq2x"]
-[ext_resource type="Script" path="res://score_board_close_button.gd" id="1_y78uv"]
+[ext_resource type="Script" path="res://script/score_board_close_button.gd" id="1_y78uv"]
 
 [node name="score_board" type="Control"]
 layout_mode = 3

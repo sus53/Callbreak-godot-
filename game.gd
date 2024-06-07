@@ -2,11 +2,11 @@ extends Node
 
 var bid1 = [0,0,0,0,0]
 var score1 = [0,0,0,0,0]
-var bid2 = [0,0,0,0,0]
+var bid2 = [2,2,2,2,2]
 var score2 = [0,0,0,0,0]
-var bid3 = [0,0,0,0,0]
+var bid3 = [2,2,2,2,2]
 var score3 =[0,0,0,0,0]
-var bid4 = [0,0,0,0,0]
+var bid4 = [2,2,2,2,2]
 var score4 = [0,0,0,0,0]
 
 var round = 0
@@ -14,6 +14,7 @@ var round = 0
 var card_disabled = false
 
 var can_select = false
+var can_select_ai = false
 var player_turn = 1
 var start_turn = 1
 var start_turn_card = ""
@@ -29,13 +30,13 @@ var player3_cards = {}
 var player4_cards = {}
 
 var player1_card_selected = ""
-var player1_card_node 
+var player1_card_node = ""
 var player2_card_selected = ""
-var player2_card_node 
+var player2_card_node = ""
 var player3_card_selected = ""
-var player3_card_node 
+var player3_card_node = ""
 var player4_card_selected = ""
-var player4_card_node 
+var player4_card_node = ""
 
 var index = 0
 
@@ -70,4 +71,4 @@ func calculate_score():
 		4: 
 			score4[round] += 1
 			return Vector2(-20000,0)
-	
+			

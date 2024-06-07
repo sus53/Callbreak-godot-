@@ -1,3 +1,4 @@
+
 extends Control
 
 @onready var round = $BoxContainer/round
@@ -29,15 +30,15 @@ func score_adder(i):
 
 	_lbl_round.text = str(global.round)
 	_player1.text = str(score_calulator(int(global.bid1[i-1]),int(global.score1[i-1])))
-	#_player2.text = str(score_calulator(int(global.bid2[i-1]),int(global.score2[i-1])))
-	#_player3.text = str(score_calulator(int(global.bid3[i-1]),int(global.score3[i-1])))
-	#_player4.text = str(score_calulator(int(global.bid4[i-1]),int(global.score4[i-1])))
+	_player2.text = str(score_calulator(int(global.bid2[i-1]),int(global.score2[i-1])))
+	_player3.text = str(score_calulator(int(global.bid3[i-1]),int(global.score3[i-1])))
+	_player4.text = str(score_calulator(int(global.bid4[i-1]),int(global.score4[i-1])))
 	
 	round.add_child(_lbl_round)
 	player_1.add_child(_player1)
-	#player_2.add_child(_player2)
-	#player_3.add_child(_player3)
-	#player_4.add_child(_player4)
+	player_2.add_child(_player2)
+	player_3.add_child(_player3)
+	player_4.add_child(_player4)
 	
 func score_calulator(bid,score):
 	if score < bid:
