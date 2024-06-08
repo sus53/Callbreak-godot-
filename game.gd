@@ -13,6 +13,7 @@ var round = 0
 
 var card_disabled = false
 
+var can_player_move = true
 var can_select = false
 var can_select_ai = false
 var player_turn = 1
@@ -71,4 +72,3 @@ func calculate_score():
 		4: 
 			score4[round] += 1
 			return Vector2(-20000,0)
-			

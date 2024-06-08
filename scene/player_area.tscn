@@ -179,6 +179,9 @@ one_shot = true
 wait_time = 0.849
 one_shot = true
 
+[node name="player_move" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="card_show" to="." method="_on_timer_timeout"]
 [connection signal="input_event" from="card_suffle/card1" to="card_suffle/card1" method="_on_input_event"]
 [connection signal="mouse_entered" from="card_suffle/card1" to="card_suffle/card1" method="_on_mouse_entered"]
@@ -222,3 +225,4 @@ one_shot = true
 [connection signal="timeout" from="card_suffle/turn_over" to="card_suffle/card1" method="_on_turn_over_timeout"]
 [connection signal="timeout" from="render_time" to="card_suffle/card1" method="_on_render_time_timeout"]
 [connection signal="timeout" from="ai_move" to="card_suffle/card1" method="_on_ai_move_timeout"]
+[connection signal="timeout" from="player_move" to="card_suffle/card1" method="_on_player_move_timeout"]
