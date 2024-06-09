@@ -7,6 +7,7 @@ var card_names = ["clubs", "diamond", "spade", "hearts"]
 @onready var render_time = $"../../render_time"
 @onready var ai_move = $"../../ai_move"
 @onready var player_move = $"../../player_move"
+var move_started = true
 
 func _ready():
 	randomize()
@@ -34,6 +35,14 @@ func _process(delta):
 			global.start_turn_card = global.player4_card_selected
 
 	match global.player_turn:
+		1:
+			#print("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+			#print(move_started)
+			#print(global.start_turn == 1 and global.player_turn == 1 and not move_started)
+			#print(global.start_turn)
+			if move_started:
+				player_move.start(1.8)
+				move_started = false
 		2:
 			if player_area.name == "player_area2" && global.can_select_ai:
 				ai_move_func()
@@ -203,7 +212,6 @@ func turn_over(position):
 	tween2.tween_property(global.player2_card_node, "position", position.rotated(PI / 2), 1)
 	tween3.tween_property(global.player3_card_node, "position", position.rotated(-PI), 1)
 	tween4.tween_property(global.player4_card_node, "position", position.rotated(PI * 3 / 2), 1)
-	player_move.start(2.0)
 
 func _on_turn_over_timeout():
 	turn_over(global.calculate_score())
@@ -272,6 +280,7 @@ func ai_move_func():
 			print("Selected_card_node = " + selected_card_node.name)
 			var card_move_tween = create_tween()
 			card_move_tween.tween_property(selected_card_node, "position", Vector2(30, 680), 0.25)
+			global.can_player_move = false
 			match global.player_turn:
 				2:
 					global.player2_card_selected = selected_card
@@ -293,9 +302,10 @@ func ai_move_func():
 					global.player4_card_node = selected_card_node
 					print(global.player4_cards.values())
 					global.player4_cards.erase(selected_card_index - 1)
-					player_move.start(3)
 					print(global.player4_cards.values())
 					print("--------------------------------")
+					move_started = true
+					
 
 			global.player_turn = global.player_turn + 1 if global.player_turn < 4 else 1
 			global.reset_turn += 1
