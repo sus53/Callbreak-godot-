@@ -95,7 +95,7 @@ func suffle_card_and_add_cards(player_card):
 			var player1_card_tween = Tween.new()
 			card = get_node("./card_suffle/card" + str(i))
 			#player1_card_tween.tween_property(card,"scale",Vector2(card.scale.x * 2,card.scale.y * 2),0.5)
-			card.scale = Vector2(2,2)
+			#card.scale = Vector2(2,2)
 			card.get_child(0).texture = load("res://assets/" + new_player_card[i-1].substr(0,new_player_card[i-1].length() - 2).to_lower() + "/PNG/" + str(new_player_card[i-1].substr(new_player_card[i-1].length() - 2,2)) + ".png")
 	return new_player_card
 		

@@ -268,6 +268,7 @@ func ai_move_func():
 
 			print("player_card_index = " + str(selected_card_index))
 			var selected_card_node = get_node("../card" + str(selected_card_index))
+			selected_card_node.get_child(0).texture = load("res://assets/" + selected_card.substr(0,selected_card.length() - 2) + "/PNG/"+selected_card.substr(selected_card.length() - 2,2)+".png")
 			print("Selected_card_node = " + selected_card_node.name)
 			var card_move_tween = create_tween()
 			card_move_tween.tween_property(selected_card_node, "position", Vector2(30, 680), 0.25)
