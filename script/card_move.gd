@@ -36,10 +36,6 @@ func _process(delta):
 
 	match global.player_turn:
 		1:
-			#print("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
-			#print(move_started)
-			#print(global.start_turn == 1 and global.player_turn == 1 and not move_started)
-			#print(global.start_turn)
 			if move_started:
 				player_move.start(1.8)
 				move_started = false
@@ -203,11 +199,6 @@ func turn_over(position):
 	var tween2 = create_tween()
 	var tween3 = create_tween()
 	var tween4 = create_tween()
-	print("////////////////////////////////")
-	print(global.player1_card_node.name)
-	print(global.player2_card_node.name)
-	print(global.player3_card_node.name)
-	print(global.player4_card_node.name)
 	tween1.tween_property(global.player1_card_node, "position", position, 1)
 	tween2.tween_property(global.player2_card_node, "position", position.rotated(PI / 2), 1)
 	tween3.tween_property(global.player3_card_node, "position", position.rotated(-PI), 1)
@@ -319,6 +310,4 @@ func _on_ai_move_timeout():
 
 
 func _on_player_move_timeout():
-	print("------------------6666666666666666666" + str(global.can_player_move))
 	global.can_player_move = true
-	print("----------------66666666666666666666-" + str(global.can_player_move))

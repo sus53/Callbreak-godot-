@@ -14,8 +14,13 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 260.0
+offset_top = 104.0
+offset_right = 260.0
+offset_bottom = 104.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.448764, 0.378454)
 script = ExtResource("1_coo3x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -24,8 +29,8 @@ scale = Vector2(0.429209, 0.242448)
 texture = ExtResource("2_7i41m")
 
 [node name="card_bundle" type="Sprite2D" parent="."]
-position = Vector2(400.291, 366.781)
-scale = Vector2(2.86464, 2.25035)
+position = Vector2(336.48, 509.969)
+scale = Vector2(5.75713, 5.38379)
 
 [node name="Sprite2D" type="Sprite2D" parent="card_bundle"]
 position = Vector2(5.81366, -54.8586)
@@ -49,19 +54,21 @@ position = Vector2(297.291, 374.781)
 scale = Vector2(3.26817, 2.51556)
 
 [node name="Play" type="Button" parent="VBoxContainer"]
-offset_left = 17.135
-offset_top = 1.19259
-offset_right = 58.135
-offset_bottom = 18.1926
+offset_left = -15.964
+offset_top = 29.5817
+offset_right = 25.036
+offset_bottom = 47.5817
+scale = Vector2(2.08883, 2.63184)
 theme_override_fonts/font = ExtResource("6_eu52v")
 theme_override_font_sizes/font_size = 8
 text = "Play"
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
-offset_left = 17.135
-offset_top = 22.1926
-offset_right = 58.135
-offset_bottom = 40.1926
+offset_left = -15.2822
+offset_top = 81.0509
+offset_right = 25.7178
+offset_bottom = 99.0509
+scale = Vector2(2.0321, 2.75951)
 theme_override_fonts/font = ExtResource("6_eu52v")
 theme_override_font_sizes/font_size = 8
 text = "Exit
@@ -69,10 +76,11 @@ text = "Exit
 
 [node name="lbl_callbreak" type="Label" parent="."]
 layout_mode = 0
-offset_left = 314.291
-offset_top = 44.7806
-offset_right = 540.291
-offset_bottom = 102.781
+offset_left = 240.661
+offset_top = -153.255
+offset_right = 466.661
+offset_bottom = -95.2546
+scale = Vector2(1.3909, 2.07603)
 theme_override_colors/font_color = Color(0.227965, 8.58653e-05, 0.780242, 1)
 theme_override_fonts/font = ExtResource("6_pa1i8")
 theme_override_font_sizes/font_size = 46
@@ -80,12 +88,12 @@ text = "Call Break"
 
 [node name="lbl_hero" type="Label" parent="."]
 layout_mode = 0
-offset_left = 494.291
-offset_top = 112.781
-offset_right = 524.291
-offset_bottom = 137.781
+offset_left = 521.432
+offset_top = -10.5693
+offset_right = 551.432
+offset_bottom = 14.4307
 rotation = -0.365538
-scale = Vector2(2.66948, 2.70003)
+scale = Vector2(3.42372, 2.9855)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_4nt6r")
 text = "Hero"

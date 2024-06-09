@@ -8,21 +8,22 @@
 [ext_resource type="Script" path="res://script/toggle_scoreboard.gd" id="5_xms67"]
 
 [node name="game" type="Area2D"]
-position = Vector2(531, 294)
+position = Vector2(562, 281)
+scale = Vector2(0.614358, 0.525952)
 
 [node name="Background" parent="." instance=ExtResource("1_cll2u")]
 position = Vector2(-637, -335)
 scale = Vector2(1.18597, 1.11105)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(56, 42)
-zoom = Vector2(0.98, 0.98)
+position = Vector2(88.8985, 15.5855)
+zoom = Vector2(0.71, 0.71)
 
 [node name="players" type="Node2D" parent="."]
 position = Vector2(-140, 246)
 
 [node name="player_area1" parent="players" instance=ExtResource("4_y2dgk")]
-position = Vector2(209, 184)
+position = Vector2(211.489, 183.736)
 
 [node name="player_area2" parent="players" instance=ExtResource("4_y2dgk")]
 position = Vector2(643, -233)
@@ -47,12 +48,13 @@ script = ExtResource("3_i6bo0")
 one_shot = true
 
 [node name="toggle_scoreboard" type="Button" parent="."]
-offset_left = 863.0
-offset_top = -427.0
-offset_right = 974.0
-offset_bottom = -396.0
+offset_left = 609.12
+offset_top = -480.553
+offset_right = 720.12
+offset_bottom = -449.553
 text = "ScoreBoard"
 script = ExtResource("5_xms67")
+metadata/_edit_use_anchors_ = true
 
 [node name="bg" type="Sprite2D" parent="toggle_scoreboard"]
 z_index = -1

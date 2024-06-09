@@ -14,6 +14,7 @@ var to_find_num
 func card_suffle_backside():
 	var tween_area = create_tween()
 	var tween_sprite = create_tween()
+	var screen_viewport = get_viewport().size
 	for i in range(1, 14): 
 		card = get_node("./card_suffle/card" + str(i))
 		card.get_child(0).texture = load("res://assets/card_backside.jpeg")
@@ -88,9 +89,14 @@ func suffle_card_and_add_cards(player_card):
 			to_find_num = card_names[random_index_card] + str("%02d" % random_index_number)
 		player_card[i-1] = str(card_names[random_index_card] + str("%02d" % random_index_number))
 	new_player_card = sort_cards(player_card)
-	for  i in  range(1, 14):
-		card = get_node("./card_suffle/card" + str(i))
-		card.get_child(0).texture = load("res://assets/" + new_player_card[i-1].substr(0,new_player_card[i-1].length() - 2).to_lower() + "/PNG/" + str(new_player_card[i-1].substr(new_player_card[i-1].length() - 2,2)) + ".png")
+	if self.name == "player_area1":
+		
+		for  i in  range(1, 14):
+			var player1_card_tween = Tween.new()
+			card = get_node("./card_suffle/card" + str(i))
+			#player1_card_tween.tween_property(card,"scale",Vector2(card.scale.x * 2,card.scale.y * 2),0.5)
+			card.scale = Vector2(2,2)
+			card.get_child(0).texture = load("res://assets/" + new_player_card[i-1].substr(0,new_player_card[i-1].length() - 2).to_lower() + "/PNG/" + str(new_player_card[i-1].substr(new_player_card[i-1].length() - 2,2)) + ".png")
 	return new_player_card
 		
 
