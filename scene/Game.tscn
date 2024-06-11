@@ -40,18 +40,19 @@ rotation = 1.57631
 [node name="place_call_menu" parent="." instance=ExtResource("3_7ajvb")]
 z_index = 10
 z_as_relative = false
-position = Vector2(-424, -54)
-scale = Vector2(0.789362, 0.508229)
+position = Vector2(-512.73, -385.967)
+scale = Vector2(1.07053, 1.06459)
 script = ExtResource("3_i6bo0")
 
 [node name="Timer" type="Timer" parent="place_call_menu"]
 one_shot = true
 
 [node name="toggle_scoreboard" type="Button" parent="."]
-offset_left = 609.12
-offset_top = -480.553
-offset_right = 720.12
-offset_bottom = -449.553
+offset_left = 810.602
+offset_top = -498.144
+offset_right = 921.602
+offset_bottom = -467.144
+scale = Vector2(1.49692, 2.3694)
 text = "ScoreBoard"
 script = ExtResource("5_xms67")
 metadata/_edit_use_anchors_ = true

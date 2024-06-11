@@ -24,8 +24,8 @@ scale = Vector2(0.448764, 0.378454)
 script = ExtResource("1_coo3x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(392.291, 280.781)
-scale = Vector2(0.429209, 0.242448)
+position = Vector2(376.59, 351.43)
+scale = Vector2(0.501424, 0.364099)
 texture = ExtResource("2_7i41m")
 
 [node name="card_bundle" type="Sprite2D" parent="."]

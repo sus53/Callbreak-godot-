@@ -13,13 +13,31 @@ var to_find_num
 
 func card_suffle_backside():
 	var tween_area = create_tween()
-	var tween_sprite = create_tween()
-	var screen_viewport = get_viewport().size
-	for i in range(1, 14): 
-		card = get_node("./card_suffle/card" + str(i))
-		card.get_child(0).texture = load("res://assets/card_backside.jpeg")
-		tween_area.tween_property(card,"position",Vector2(-5700 + (i*800),4000 + 400),0.24)
-		
+	#var screen_viewport = get_viewport().size
+	
+	if self.name == "player_area1":
+		for i in range(1, 14): 
+			card = get_node("./card_suffle/card" + str(i))
+			card.get_child(0).texture = load("res://assets/card_backside.jpeg")
+			card.get_child(1).z_index = i
+			tween_area.tween_property(card,"position",Vector2(-10500 + (i*1500),4400),0.20)
+			tween_area.tween_property(card,"scale",Vector2(3,3),0.04)
+	elif self.name == "player_area2":
+		for i in range(1, 14): 
+			card = get_node("./card_suffle/card" + str(i))
+			card.get_child(0).texture = load("res://assets/card_backside.jpeg")
+			tween_area.tween_property(card,"position",Vector2(-6800 + (i*900),10000),0.24)
+	elif self.name == "player_area4":	
+		for i in range(1, 14): 
+			card = get_node("./card_suffle/card" + str(i))
+			card.get_child(0).texture = load("res://assets/card_backside.jpeg")
+			tween_area.tween_property(card,"position",Vector2(-6300 + (i*900),10000),0.24)		
+	else:
+		for i in range(1, 14): 
+			card = get_node("./card_suffle/card" + str(i))
+			card.get_child(0).texture = load("res://assets/card_backside.jpeg")
+			tween_area.tween_property(card,"position",Vector2(-7000 + (i*900),4400),0.24)	
+		self.remove_child(self.get_child(2))
 		
 func _ready():
 	randomize()  
@@ -98,8 +116,6 @@ func suffle_card_and_add_cards(player_card):
 			#card.scale = Vector2(2,2)
 			card.get_child(0).texture = load("res://assets/" + new_player_card[i-1].substr(0,new_player_card[i-1].length() - 2).to_lower() + "/PNG/" + str(new_player_card[i-1].substr(new_player_card[i-1].length() - 2,2)) + ".png")
 	return new_player_card
-		
-
 
 func _on_mouse_entered():
 	global.player_active = self.name.substr(11)

@@ -14,14 +14,13 @@ func _ready():
 	
 
 func _on_mouse_entered():
-	if global.card_disabled:
-		if int(global.player_turn) == int(global.player_active):
-			match global.player_turn:
-				1:
-					check_cards_logic(global.player1_cards)
+	if global.card_disabled && player_area.name == "player_area1":
+		if int(global.player_turn) == 1:
+			check_cards_logic(global.player1_cards)
 
 func _on_mouse_exited():
-	self.scale = Vector2(1.0, 1.0)
+	if player_area.name == "player_area1":
+		self.scale = Vector2(3.0, 3.0)
 
 func _process(delta):
 	match global.start_turn:
@@ -52,14 +51,14 @@ func _process(delta):
 
 func _on_input_event(viewport, event, shape_idx):
 	if global.card_disabled:
-		if int(global.player_turn) == int(global.player_active):
-			if event is InputEventMouseButton:
-				if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
+		if int(global.player_turn) == 1:
+			if event is InputEventScreenTouch:
+				if event.index == 0 and event.pressed:
 					if global.can_select && global.can_player_move:
 						var card_move_tween = create_tween()
 						print("start_card = " + global.start_turn_card)
 						print("reset_turn = " + str(global.reset_turn))
-						card_move_tween.tween_property(self, "position", Vector2(30, 680), 0.25)
+						card_move_tween.tween_property(self, "position", Vector2(30, 680), 0.5)
 						global.player1_card_selected = global.player1_cards[int(self.name.substr(4)) - 1]
 						print("selected_card =  " + str(global.player1_card_selected))
 						global.player1_card_node = self
@@ -75,17 +74,17 @@ func _on_input_event(viewport, event, shape_idx):
 
 func check_cards_logic(player_cards):
 	if global.player_turn == global.start_turn:
-		self.scale = Vector2(1.1, 1.1)
+		self.scale = Vector2(3.2, 3.2)
 		global.can_select = true
 	elif check_cards_available(player_cards):
 		if check_hover_card(player_cards):
-			self.scale = Vector2(1.1, 1.1)
+			self.scale = Vector2(3.2, 3.2)
 			global.can_select = true
 	elif check_spade(player_cards):
 		if check_hover_spade(player_cards):
 			global.can_select = true
 	else:
-		self.scale = Vector2(1.1, 1.1)
+		self.scale = Vector2(3.2, 3.2)
 		global.can_select = true
 
 func check_cards_available(player_cards):
@@ -126,7 +125,7 @@ func check_spade(player_cards):
 
 func check_hover_spade(player_cards):
 	if "s" == player_cards[int(self.name.substr(4)) - 1].substr(0, 1):
-		self.scale = Vector2(1.1, 1.1)
+		self.scale = Vector2(3.2, 3.2)
 		return true
 	else:
 		global.can_select = false
@@ -150,7 +149,7 @@ func check_hover_card_sub(player_selected_card, player_cards):
 	var player_selected_cards = [player1_selected, player2_selected, player3_selected, player4_selected]
 	var isHigh = false
 	if player_selected_card == "":
-		self.scale = Vector2(1.1, 1.1)
+		self.scale = Vector2(3.2, 3.2)
 		return true
 	elif player_selected_card.substr(0, 1) == player_cards[int(self.name.substr(4)) - 1].substr(0, 1):
 		if check_high_card(player_cards):
@@ -165,12 +164,12 @@ func check_hover_card_sub(player_selected_card, player_cards):
 					else:
 						isHigh = false
 			if isHigh:
-				self.scale = Vector2(1.1, 1.1)
+				self.scale = Vector2(3.2, 3.2)
 				return true
 			else:     
 				global.can_select = false
 		else:
-			self.scale = Vector2(1.1, 1.1)
+			self.scale = Vector2(3.2, 3.2)
 			return true
 	else:
 		global.can_select = false
@@ -182,7 +181,8 @@ func reset_turn():
 		global.reset_turn = 0
 		render_time.start(1)
 		ai_move.start(5)
-		global.start_turn = 0
+		global.start_turn = 1
+		global.player_turn = 1
 		return 
 	if global.reset_turn == 4:
 		global.reset_turn = 0
@@ -203,6 +203,8 @@ func turn_over(position):
 	tween2.tween_property(global.player2_card_node, "position", position.rotated(PI / 2), 1)
 	tween3.tween_property(global.player3_card_node, "position", position.rotated(-PI), 1)
 	tween4.tween_property(global.player4_card_node, "position", position.rotated(PI * 3 / 2), 1)
+	if position == Vector2(0,20000):
+		move_started = true
 
 func _on_turn_over_timeout():
 	turn_over(global.calculate_score())
@@ -271,7 +273,8 @@ func ai_move_func():
 			selected_card_node.get_child(0).texture = load("res://assets/" + selected_card.substr(0,selected_card.length() - 2) + "/PNG/"+selected_card.substr(selected_card.length() - 2,2)+".png")
 			print("Selected_card_node = " + selected_card_node.name)
 			var card_move_tween = create_tween()
-			card_move_tween.tween_property(selected_card_node, "position", Vector2(30, 680), 0.25)
+			card_move_tween.tween_property(selected_card_node, "position", Vector2(30, 680), 0.5)
+			card_move_tween.tween_property(selected_card_node,"scale",Vector2(3,3),0.2)
 			global.can_player_move = false
 			match global.player_turn:
 				2:

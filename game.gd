@@ -62,6 +62,7 @@ func calculate_score():
 	match  index:
 		1:
 			score1[round] += 1
+			
 			return Vector2(0,20000)
 		2:
 			score2[round] += 1

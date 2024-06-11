@@ -8,6 +8,7 @@
 
 [node name="place_call_menu" type="Node2D"]
 visible = false
+scale = Vector2(0.757729, 0.644915)
 
 [node name="MenuBackground" type="Sprite2D" parent="."]
 position = Vector2(575.687, 323)
@@ -145,7 +146,7 @@ offset_top = 37.0
 offset_right = 271.0
 offset_bottom = 75.0
 theme_override_font_sizes/font_size = 54
-text = "Place your Call"
+text = "Place your Bid"
 
 [node name="call_progress" type="TextureProgressBar" parent="."]
 offset_left = 637.0

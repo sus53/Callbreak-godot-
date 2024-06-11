@@ -17,7 +17,7 @@ script = ExtResource("1_cc4lr")
 wait_time = 3.7
 one_shot = true
 
-[node name="card_suffle" type="Area2D" parent="."]
+[node name="card_suffle" type="Node2D" parent="."]
 z_index = -1
 position = Vector2(0, -330)
 scale = Vector2(0.0684037, 0.0766994)
@@ -160,6 +160,7 @@ wait_time = 1.12
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 1)
 scale = Vector2(9.59784, 6.20512)
 shape = SubResource("RectangleShape2D_typsm")
